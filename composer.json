@@ -1,0 +1,13 @@
+{
+    "name": "urquiza/tp",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "phpunit/phpunit": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    }
+}
