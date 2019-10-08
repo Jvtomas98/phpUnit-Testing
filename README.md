@@ -10,8 +10,8 @@
 #### [X] getSalario
 #### [X] setSector
 #### [X] getSector
-#### [] __toString()
-###  [] empleadoNombreVacio 
+#### [-] __toString()
+#### [] empleadoNombreVacio 
 #### [] empleadoApellecidoVacio
 #### [] empleadoDNIVacio
 #### [] validacionDNI
