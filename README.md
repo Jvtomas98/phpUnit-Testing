@@ -5,11 +5,11 @@
 ## Mark on the brackets "X" if it's completed / "-" if it's in progress / "" if it's not started
 
 ### [] Funciones Basicas
-#### [] getNombreApellido
-#### [] getDNI
-#### [] getSalario
-#### [] setSector
-#### [] getSector
+#### [X] getNombreApellido
+#### [X] getDNI
+#### [X] getSalario
+#### [X] setSector
+#### [X] getSector
 #### [] __toString()
 ###  [] empleadoNombreVacio 
 #### [] empleadoApellecidoVacio
@@ -17,10 +17,10 @@
 #### [] validacionDNI
 #### [] getSector == "" => "No especificado"
 
-### [] Empleado Eventual
+### [X] Empleado Eventual
 #### [X] calcularComisionFuncionaCorrectamente
-#### [] calcularIngresoTotalFuncionaCorrectamente
-#### [] validacionMontoNegativoOCero
+#### [X] calcularIngresoTotalFuncionaCorrectamente
+#### [X] validacionMontoNegativoOCero
 
 ### [] Empleado Permanente
 #### [] getFechaIngresoFuncionaCorrectamente
