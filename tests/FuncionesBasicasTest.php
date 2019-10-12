@@ -29,5 +29,8 @@ abstract class FuncionesBasicasTest extends \PHPUnit\Framework\TestCase {
 		$this->expectException(\Exception::class);
 		$ca = $this->crear(1000,[100,200],"","" );
 	}	
-
+	public function testDNIVacio(){
+		$this->expectException(\Exception::class);
+		$ca = $this->crear(1000,[100,200],"Fulano","De Tal","");
+	}
 }
