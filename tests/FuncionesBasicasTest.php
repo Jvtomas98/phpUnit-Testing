@@ -33,4 +33,8 @@ abstract class FuncionesBasicasTest extends \PHPUnit\Framework\TestCase {
 		$this->expectException(\Exception::class);
 		$ca = $this->crear(1000,[100,200],"Fulano","De Tal","");
 	}
+	public function testSalarioVacio(){
+		$this->expectException(\Exception::class);
+		$ca = $this->crear("",[100,200]);
+	}
 }
