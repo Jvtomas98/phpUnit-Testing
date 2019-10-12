@@ -11,8 +11,8 @@
 #### [X] setSector
 #### [X] getSector
 #### [X] __toString()
-#### [] empleadoNombreVacio 
-#### [] empleadoApellidoVacio
+#### [X] empleadoNombreVacio 
+#### [X] empleadoApellidoVacio
 #### [] empleadoDNIVacio
 #### [] validacionDNI
 #### [] getSector == "" => "No especificado"
