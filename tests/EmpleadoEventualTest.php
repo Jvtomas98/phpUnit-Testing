@@ -1,14 +1,18 @@
 <?php
 require_once "FuncionesBasicasTest.php";
+require_once "utils.php";
+
 class EmpleadoEventualTest extends FuncionesBasicasTest {
 
     public function crear(
-        $salario = 10000,
-        Array $montos = [],
-        $nombre = "Fulano",
-        $apellido = "De Tal", 
-        $dni = 11111111
+        // Parms del method crear
+        $salario=SALARIO,
+        $montos=MONTOS,
+        $nombre=NOMBRE,
+        $apellido=APELLIDO,
+        $dni=DNI
     ) {
+        // Instancia la clase con los params del method
         $ca = new \App\EmpleadoEventual(
             $nombre,
             $apellido,
@@ -17,27 +21,36 @@ class EmpleadoEventualTest extends FuncionesBasicasTest {
             $montos
         );
         return $ca;
-	}
-
-	public function testCalculoComisionFuncionaBien() {
-		$ca = $this->crear(1000, [1000,2000]);
-		$this->assertEquals(75, $ca->calcularComision());
-	}
-
-	public function testCalcularIngresoTotalFuncionaCorrectamente() {
-		$ca = $this->crear(1000, [1000,2000]);
-		$this->assertEquals(1075, $ca->calcularIngresoTotal());
     }
 
-    public function testValidacionMontoNegativo()
-    {
-        $this->expectException(\Exception::class);
-        $ca = $this->crear(1000, [-300,1000]);
+    public function testCalculoComisionFuncionaBien() {
+        // Test que la comicion sea correcta
+        $montosVentas = [1000, 2000];
+        $resultadoEsperado = ((1000 + 2000) / 2) * 0.05;
+
+        $ca = $this->crear($salario=SALARIO, $montos=$montosVentas); // Si no pones salario tira error ????
+        $this->assertEquals($resultadoEsperado, $ca->calcularComision());
     }
 
-    public function testValidacionMontoCero()
-    {
+    public function testCalcularIngresoTotalFuncionaCorrectamente() {
+        // Test devolucion del ingreso total por 2 ventas
+        $montosVentas = [1000, 2000];
+        $comicion = ((1000 + 2000) / 2) * 0.05;
+        $resultadoEsperado = $comicion + SALARIO;
+
+        $ca = $this->crear($salario=SALARIO, $montos=$montosVentas);
+        $this->assertEquals($resultadoEsperado, $ca->calcularIngresoTotal());
+    }
+
+    public function testValidacionMontoNegativo() {
+        // Test si ingresa negativo en una venta
         $this->expectException(\Exception::class);
-        $ca = $this->crear(1000,[2500,0]);
+        $ca = $this->crear($salario=SALARIO, $montos=[-300, 1000]);
+    }
+
+    public function testValidacionMontoCero() {
+        // Test si ingresa 0 en una venta
+        $this->expectException(\Exception::class);
+        $ca = $this->crear($salario=SALARIO, $montos=[2500,0]);
     }
 }
