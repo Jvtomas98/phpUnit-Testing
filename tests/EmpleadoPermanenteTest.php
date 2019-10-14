@@ -1,15 +1,18 @@
 <?php
 require_once "FuncionesBasicasTest.php";
-class EmpleadoEventualTest extends FuncionesBasicasTest {
+require_once "utils.php";
+
+class EmpleadoPermanenteTest extends FuncionesBasicasTest {
 
     public function crear(
-        $salario = 10000,
-        $nombre = "Fulano",
-        $apellido = "De Tal", 
-        $dni = 11111111,
-        $fechaIngreso = null
+        // Parms del method crear
+        $salario=SALARIO,
+        $nombre=NOMBRE,
+        $apellido=APELLIDO,
+        $dni=DNI,
+        $fechaIngreso=null
     ) {
-        $ca = new \App\EmpleadoEventual(
+        $ca = new \App\EmpleadoPermanente(
             $nombre,
             $apellido,
             $dni,
@@ -18,6 +21,11 @@ class EmpleadoEventualTest extends FuncionesBasicasTest {
         );
         return $ca;
     }
-    public function testGetFechaIngresoFuncionaCorrectamente(){
 
+    public function testGetFechaIngresoFuncionaCorrectamente(){
+        // Test si getFechaIngreso es un objeto DateTime
+        $ca = $this->crear();
+        $this->assertEquals(is_a($ca->getFechaIngreso(), 'DateTime'), true);
     }
+
+}
