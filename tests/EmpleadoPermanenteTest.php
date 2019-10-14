@@ -28,4 +28,13 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $this->assertEquals(is_a($ca->getFechaIngreso(), 'DateTime'), true);
     }
 
+    public function testExeptionFechaFutura() {
+        // Test excepción en caso de ser una fecha futura
+        $this->expectException(\Exception::class);
+        $fechaActual = new \DateTime();
+        $unaFechaFutura = $fechaActual->add(new DateInterval('P10D'));
+
+        $ca = $this->crear($fechaIngreso=$unaFechaFutura);
+    }
+
 }
