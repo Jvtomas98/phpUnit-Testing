@@ -35,8 +35,8 @@ class EmpleadoEventualTest extends FuncionesBasicasTest {
     public function testCalcularIngresoTotalFuncionaCorrectamente() {
         // Test devolucion del ingreso total por 2 ventas
         $montosVentas = [1000, 2000];
-        $comicion = ((1000 + 2000) / 2) * 0.05;
-        $resultadoEsperado = $comicion + SALARIO;
+        $comision = ((1000 + 2000) / 2) * 0.05;
+        $resultadoEsperado = $comision + SALARIO;
 
         $ca = $this->crear($salario=SALARIO, $montos=$montosVentas);
         $this->assertEquals($resultadoEsperado, $ca->calcularIngresoTotal());
