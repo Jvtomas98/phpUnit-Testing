@@ -23,7 +23,7 @@
 #### [X] calcularIngresoTotalFuncionaCorrectamente
 #### [X] validacionMontoNegativoOCero
 
-### [] Empleado Permanente
+### [X] Empleado Permanente
 #### [] getFechaIngresoFuncionaCorrectamente
 #### [] calcularComisionFuncionaCorrectamente
 #### [] calcularIngresoTotalFuncionaCorrectamente
