@@ -10,12 +10,13 @@
 #### [X] getSalario
 #### [X] setSector
 #### [X] getSector
-#### [-] __toString()
-#### [] empleadoNombreVacio 
-#### [] empleadoApellecidoVacio
-#### [] empleadoDNIVacio
-#### [] validacionDNI
-#### [] getSector == "" => "No especificado"
+#### [X] __toString()
+#### [X] empleadoNombreVacio 
+#### [X] empleadoApellidoVacio
+#### [x] empleadoDNIVacio
+#### [X] empleadoSalarioVacio
+#### [-] validacionDNI
+#### [-] getSector == "" => "No especificado"
 
 ### [X] Empleado Eventual
 #### [X] calcularComisionFuncionaCorrectamente
