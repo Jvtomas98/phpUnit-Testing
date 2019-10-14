@@ -15,8 +15,8 @@
 #### [X] empleadoApellidoVacio
 #### [x] empleadoDNIVacio
 #### [X] empleadoSalarioVacio
-#### [] validacionDNI
-#### [] getSector == "" => "No especificado"
+#### [-] validacionDNI
+#### [-] getSector == "" => "No especificado"
 
 ### [X] Empleado Eventual
 #### [X] calcularComisionFuncionaCorrectamente
