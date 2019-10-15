@@ -72,5 +72,5 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $antiguedad = $fechaIngreso->diff($fechaActual);
         $this->assertEquals($antiguedad,$ca->calcularAntiguedad());
     }
-    public function 
+    
 }
