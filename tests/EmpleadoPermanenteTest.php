@@ -33,7 +33,6 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $this->expectException(\Exception::class);
         $fechaActual = new \DateTime();
         $unaFechaFutura = $fechaActual->add(new DateInterval('P10D'));
-
         $ca = $this->crear($fechaIngreso=$unaFechaFutura);
     }
 
@@ -62,5 +61,16 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $this->assertEquals($ingresoTotal,$ca->calcularIngresoTotal());
 
     }
-
+    public function testNoProporcionaFechaIngreso(){
+        $ca = $this->crear();
+        $fechaHoy = new \DateTime();
+        $this->assertEquals($fechaHoy,$ca->getFechaIngreso());
+    }
+    public function testAntiguedadCeroPorNoProporcionarFechaIngreso(){
+        $ca = $this->crear();
+        $fechaActual = new \DateTime();
+        $antiguedad = $fechaIngreso->diff($fechaActual);
+        $this->assertEquals($antiguedad,$ca->calcularAntiguedad());
+    }
+    public function 
 }
