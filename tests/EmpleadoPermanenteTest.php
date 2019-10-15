@@ -6,11 +6,11 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
 
     public function crear(
         // Parms del method crear
-        $fechaIngreso=null,
         $salario=SALARIO,
         $nombre=NOMBRE,
         $apellido=APELLIDO,
-        $dni=DNI
+        $dni=DNI,
+        $fechaIngreso=null
     ) {
         $ca = new \App\EmpleadoPermanente(
             $nombre,
@@ -59,16 +59,19 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $fechaIngreso = new \DateTime("- 2 years");
         $fechaActual = new \DateTime();
         $antiguedad = $fechaIngreso->diff($fechaActual);
-        $ingresoTotal = SALARIO + ((SALARIO * $antiguedad->format("%y") )/ 100); 
+        $ingresoTotal = SALARIO + ((SALARIO * $antiguedad->y ) / 100); 
+
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
-        $this->assertEquals($ingresoTotal,$ca->calcularIngresoTotal());
+        $this->assertEquals($ingresoTotal, $ca->calcularIngresoTotal());
     }
 
     public function testNoProporcionaFechaIngreso(){
         $ca = $this->crear();
         $fechaHoy = new \DateTime();
         $resultadoEsperado = $fechaHoy->format('Y-m-d');
-        $this->assertEquals($resultadoEsperado, $ca->getFechaIngreso());
+        $resultadoObtenido = $ca->getFechaIngreso();
+        $resultadoObtenido = $resultadoObtenido->format('Y-m-d');
+        $this->assertEquals($resultadoEsperado, $resultadoObtenido);
     }
 
     public function testAntiguedadCeroPorNoProporcionarFechaIngreso(){
