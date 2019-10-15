@@ -24,7 +24,7 @@ class EmpleadoEventualTest extends FuncionesBasicasTest {
     }
 
     public function testCalculoComisionFuncionaBien() {
-        // Test que la comicion sea correcta
+        // Test que la comision sea correcta
         $montosVentas = [1000, 2000];
         $resultadoEsperado = ((1000 + 2000) / 2) * 0.05;
 

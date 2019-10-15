@@ -28,14 +28,14 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $this->assertEquals(is_a($ca->getFechaIngreso(), 'DateTime'), true);
     }
 
-    #public function testExeptionFechaFutura() {
-    #    // Test excepción en caso de ser una fecha futura
-    #    $this->expectException(\Exception::class);
-    #    $fechaActual = new \DateTime();
-    #    $unaFechaFutura = $fechaActual->add(new DateInterval('P10D'));
+    public function testExceptionFechaFutura() {
+        // Test excepción en caso de ser una fecha futura
+        $this->expectException(\Exception::class);
+        $fechaActual = new \DateTime();
+        $unaFechaFutura = $fechaActual->add(new DateInterval('P10D'));
 
-    #    $ca = $this->crear($fechaIngreso=$unaFechaFutura);
-    #}
+        $ca = $this->crear($fechaIngreso=$unaFechaFutura);
+    }
 
     public function testCalcularAntiguedad() {
         // Test resultado de varios años de experiencia
@@ -44,11 +44,23 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $antiguedad = $fechaIngreso->diff($fechaActual);
 
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
-        echo $ca->calcularAntiguedad();
-        echo $antiguedad->y;
         $this->assertEquals($ca->calcularAntiguedad(), $antiguedad->y);
     }
-    #public function testCalcularComision() {}
-    #public function testCalcularIngresoTotalFuncionaCorrectamente() {}
+    public function testCalcularComision() {
+        $fechaIngreso = new \DateTime("- 2 years");
+        $fechaActual = new \DateTime();
+        $antiguedad = $fechaIngreso->diff($fechaActual);
+        $ca = $this->crear($fechaIngreso=$fechaIngreso);
+        $comisionFinal = $fechaIngreso . "%";
+        $this->assertEquals($fechaFinal,$ca->calcularComision());
+    }
+    public function testCalcularIngresoTotalFuncionaCorrectamente() {
+        $fechaIngreso = new \DateTime("- 2 years");
+        $fechaActual = new \DateTime();
+        $antiguedad = $fechaIngreso->diff($fechaActual);
+        $ingresoTotal = $salario + (($salario * $antiguedad )/ 100); 
+        $this->assertEquals($ingresoTotal,$ca->calcularIngresoTotal());
+
+    }
 
 }
