@@ -52,7 +52,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $antiguedad = $fechaIngreso->diff($fechaActual);
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
         $comisionFinal = $fechaIngreso . "%";
-        $this->assertEquals($fechaFinal,$ca->calcularComision());
+        $this->assertEquals($comisionFinal,$ca->calcularComision());
     }
     public function testCalcularIngresoTotalFuncionaCorrectamente() {
         $fechaIngreso = new \DateTime("- 2 years");
