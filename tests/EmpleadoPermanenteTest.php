@@ -32,7 +32,6 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         // Test excepción en caso de ser una fecha futura
         $this->expectException(\Exception::class);
         $fechaActual = new \DateTime();
-        $fechaActual->format('Y-m-d');
         $unaFechaFutura = $fechaActual->add(new DateInterval('P10D'));
         $ca = $this->crear($fechaIngreso=$unaFechaFutura);
     }
@@ -41,8 +40,6 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         // Test resultado de varios años de experiencia
         $fechaIngreso = new \DateTime("- 2 years");
         $fechaActual = new \DateTime();
-        $fechaIngreso->format('Y-m-d');
-        $fechaActual->format('Y-m-d');
         $antiguedad = $fechaIngreso->diff($fechaActual);
 
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
@@ -51,9 +48,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
     public function testCalcularComision() {
         // Test que muestra la comicion de los años de experiencia
         $fechaIngreso = new \DateTime("- 2 years");
-        $fechaIngreso->format('Y-m-d');
         $fechaActual = new \DateTime();
-        $fechaActual->format('Y-m-d');
         $antiguedad = $fechaIngreso->diff($fechaActual);
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
         $comisionFinal = $antiguedad->y . "%";
@@ -63,8 +58,6 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         // Test para calcular el ingreso total
         $fechaIngreso = new \DateTime("- 2 years");
         $fechaActual = new \DateTime();
-        $fechaIngreso->format('Y-m-d');
-        $fechaActual->format('Y-m-d');
         $antiguedad = $fechaIngreso->diff($fechaActual);
         $ingresoTotal = SALARIO + ((SALARIO * $antiguedad->format("%y") )/ 100); 
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
@@ -74,16 +67,12 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
     public function testNoProporcionaFechaIngreso(){
         $ca = $this->crear();
         $fechaHoy = new \DateTime();
-        $fechaHoy->format('Y-m-d');
-        $this->assertEquals($fechaHoy,$ca->getFechaIngreso());
+        $resultadoEsperado = $fechaHoy->format('Y-m-d');
+        $this->assertEquals($resultadoEsperado, $ca->getFechaIngreso());
     }
 
     public function testAntiguedadCeroPorNoProporcionarFechaIngreso(){
         $ca = $this->crear();
-        $fechaActual = new \DateTime();
-        $fechaActual->format('Y-m-d');
-        $antiguedad = $fechaIngreso->diff($fechaActual);
-        $this->assertEquals($antiguedad,$ca->calcularAntiguedad());
+        $this->assertEquals("0" ,$ca->calcularAntiguedad());
     }
-    
 }
