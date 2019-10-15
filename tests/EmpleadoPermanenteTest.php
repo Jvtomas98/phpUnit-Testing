@@ -58,7 +58,8 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $fechaIngreso = new \DateTime("- 2 years");
         $fechaActual = new \DateTime();
         $antiguedad = $fechaIngreso->diff($fechaActual);
-        $ingresoTotal = $salario + (($salario * $antiguedad )/ 100); 
+        $ingresoTotal = SALARIO + ((SALARIO * $antiguedad->format("%y") )/ 100); 
+        $ca = $this->crear($fechaIngreso=$fechaIngreso);
         $this->assertEquals($ingresoTotal,$ca->calcularIngresoTotal());
 
     }
