@@ -47,14 +47,16 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $this->assertEquals($ca->calcularAntiguedad(), $antiguedad->y);
     }
     public function testCalcularComision() {
+        // Test que muestra la comicion de los años de experiencia
         $fechaIngreso = new \DateTime("- 2 years");
         $fechaActual = new \DateTime();
         $antiguedad = $fechaIngreso->diff($fechaActual);
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
-        $comisionFinal = $fechaIngreso . "%";
+        $comisionFinal = $antiguedad->y . "%";
         $this->assertEquals($comisionFinal,$ca->calcularComision());
     }
     public function testCalcularIngresoTotalFuncionaCorrectamente() {
+        // Test para calcular el ingreso total
         $fechaIngreso = new \DateTime("- 2 years");
         $fechaActual = new \DateTime();
         $antiguedad = $fechaIngreso->diff($fechaActual);
