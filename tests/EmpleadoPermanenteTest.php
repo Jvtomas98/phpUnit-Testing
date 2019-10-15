@@ -62,13 +62,14 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $ingresoTotal = SALARIO + ((SALARIO * $antiguedad->format("%y") )/ 100); 
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
         $this->assertEquals($ingresoTotal,$ca->calcularIngresoTotal());
-
     }
+
     public function testNoProporcionaFechaIngreso(){
         $ca = $this->crear();
         $fechaHoy = new \DateTime();
         $this->assertEquals($fechaHoy,$ca->getFechaIngreso());
     }
+
     public function testAntiguedadCeroPorNoProporcionarFechaIngreso(){
         $ca = $this->crear();
         $fechaActual = new \DateTime();
