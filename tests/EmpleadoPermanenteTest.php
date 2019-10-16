@@ -33,7 +33,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $this->expectException(\Exception::class);
         $fechaActual = new \DateTime();
         $unaFechaFutura = $fechaActual->add(new \DateInterval('P10D'));
-        $ca = $this->crear($fechaIngreso=$unaFechaFutura);
+        $ca = $this->crear($nombre="Fulano",$apellido="De Tal",$dni=11111111,$salario=10000,$fechaIngreso=$unaFechaFutura);
     }
 
     public function testCalcularAntiguedad() {
