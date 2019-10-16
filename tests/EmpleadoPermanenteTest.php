@@ -42,28 +42,28 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $fechaActual = new \DateTime();
         $antiguedad = $fechaIngreso->diff($fechaActual);
 
-        $ca = $this->crear($fechaIngreso=$fechaIngreso);
+        $ca = $this->crear($nombre="Fulano",$apellido="De Tal",$dni=11111111,$salario=10000,$fechaIngreso=$fechaIngreso);
         $this->assertEquals($ca->calcularAntiguedad(), $antiguedad->y);
     }
 
     public function testCalcularComision() {
         // Test que muestra la comicion de los años de experiencia
-        $fechaIngreso = new \DateTime("- 2 years");
+        $fechaIngreso = new \DateTime("-2 years");
         $fechaActual = new \DateTime();
         $antiguedad = $fechaIngreso->diff($fechaActual);
-        $ca = $this->crear($fechaIngreso=$fechaIngreso);
+        $ca = $this->crear($nombre="Fulano",$apellido="De Tal",$dni=11111111,$salario=10000,$fechaIngreso=$fechaIngreso);
         $comisionFinal = $antiguedad->y . "%";
         $this->assertEquals($comisionFinal, $ca->calcularComision());
     }
 
     public function testCalcularIngresoTotalFuncionaCorrectamente() {
         // Test para calcular el ingreso total
-        $fechaIngreso = new \DateTime("- 2 years");
+        $fechaIngreso = new \DateTime("-2 years");
         $fechaActual = new \DateTime();
         $antiguedad = $fechaIngreso->diff($fechaActual);
         $ingresoTotal = SALARIO + ((SALARIO * $antiguedad->y ) / 100); 
 
-        $ca = $this->crear($fechaIngreso=$fechaIngreso);
+        $ca = $this->crear($nombre="Fulano",$apellido="De Tal",$dni=11111111,$salario=10000,$fechaIngreso=$fechaIngreso);
         $this->assertEquals($ingresoTotal, $ca->calcularIngresoTotal());
     }
 
