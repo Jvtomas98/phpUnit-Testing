@@ -32,7 +32,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         // Test excepción en caso de ser una fecha futura
         $this->expectException(\Exception::class);
         $fechaActual = new \DateTime();
-        $unaFechaFutura = $fechaActual->add(new DateInterval('P10D'));
+        $unaFechaFutura = $fechaActual->add(new \DateInterval('P10D'));
         $ca = $this->crear($fechaIngreso=$unaFechaFutura);
     }
 
@@ -45,6 +45,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
         $this->assertEquals($ca->calcularAntiguedad(), $antiguedad->y);
     }
+
     public function testCalcularComision() {
         // Test que muestra la comicion de los años de experiencia
         $fechaIngreso = new \DateTime("- 2 years");
@@ -52,8 +53,9 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $antiguedad = $fechaIngreso->diff($fechaActual);
         $ca = $this->crear($fechaIngreso=$fechaIngreso);
         $comisionFinal = $antiguedad->y . "%";
-        $this->assertEquals($comisionFinal,$ca->calcularComision());
+        $this->assertEquals($comisionFinal, $ca->calcularComision());
     }
+
     public function testCalcularIngresoTotalFuncionaCorrectamente() {
         // Test para calcular el ingreso total
         $fechaIngreso = new \DateTime("- 2 years");
