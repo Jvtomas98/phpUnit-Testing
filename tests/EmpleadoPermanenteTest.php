@@ -6,10 +6,10 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
 
     public function crear(
         // Parms del method crear
-        $salario=SALARIO,
         $nombre=NOMBRE,
         $apellido=APELLIDO,
         $dni=DNI,
+        $salario=SALARIO,
         $fechaIngreso=null
     ) {
         $ca = new \App\EmpleadoPermanente(
@@ -68,6 +68,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
     }
 
     public function testNoProporcionaFechaIngreso(){
+        // Test si pasa null como fecha de ingreso
         $ca = $this->crear();
         $fechaHoy = new \DateTime();
         $resultadoEsperado = $fechaHoy->format('Y-m-d');
