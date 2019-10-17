@@ -3,6 +3,8 @@ namespace App;
 
 require_once 'Empleado.php';
 
+date_default_timezone_set("UTC"); // Necesito esto porq en arch tira error. Php old vs arch master race.
+
 class EmpleadoPermanente extends Empleado
 {
     private $fechaIngreso;

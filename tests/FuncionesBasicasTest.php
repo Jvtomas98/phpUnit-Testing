@@ -49,12 +49,13 @@ abstract class FuncionesBasicasTest extends \PHPUnit\Framework\TestCase {
         $ca = $this->crear($salario="");
     }
 
-    // Acorde a la documentacion esto deberia pasar pero no puedo reproducir
-    # public function testValidacionDNI(){
-    #     // Test excepción de DNI invalido
-    #     $this->expectException(\Exception::class);
-    #     $ca = $this->crear($dni="asdf12");
-    # }
+
+    public function testValidacionDNIConCaracters(){
+        // Test excepción de DNI invalido
+        $this->expectException(\Exception::class);
+        $ca = $this->crear($dni="as1111111");
+    }
+
 
     public function testNoEspecificadoSector(){
         // Test sector no especificado
