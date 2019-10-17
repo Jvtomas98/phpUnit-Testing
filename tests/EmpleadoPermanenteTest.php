@@ -6,9 +6,9 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
 
     public function crear(
         // Parms del method crear
+        $dni=DNI,
         $nombre=NOMBRE,
         $apellido=APELLIDO,
-        $dni=DNI,
         $salario=SALARIO,
         $fechaIngreso=null
     ) {
@@ -33,7 +33,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $this->expectException(\Exception::class);
         $fechaActual = new \DateTime();
         $unaFechaFutura = $fechaActual->add(new \DateInterval('P10D'));
-        $ca = $this->crear($nombre="Fulano",$apellido="De Tal",$dni=11111111,$salario=10000,$fechaIngreso=$unaFechaFutura);
+        $ca = $this->crear($dni=DNI,$nombre="Fulano",$apellido="De Tal",$salario=10000,$fechaIngreso=$unaFechaFutura);
     }
 
     public function testCalcularAntiguedad() {
@@ -42,7 +42,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $fechaActual = new \DateTime();
         $antiguedad = $fechaIngreso->diff($fechaActual);
 
-        $ca = $this->crear($nombre="Fulano",$apellido="De Tal",$dni=11111111,$salario=10000,$fechaIngreso=$fechaIngreso);
+        $ca = $this->crear($dni=DNI,$nombre="Fulano",$apellido="De Tal",$salario=10000,$fechaIngreso=$fechaIngreso);
         $this->assertEquals($ca->calcularAntiguedad(), $antiguedad->y);
     }
 
@@ -51,7 +51,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $fechaIngreso = new \DateTime("-2 years");
         $fechaActual = new \DateTime();
         $antiguedad = $fechaIngreso->diff($fechaActual);
-        $ca = $this->crear($nombre="Fulano",$apellido="De Tal",$dni=11111111,$salario=10000,$fechaIngreso=$fechaIngreso);
+        $ca = $this->crear($dni=DNI,$nombre="Fulano",$apellido="De Tal",$salario=10000,$fechaIngreso=$fechaIngreso);
         $comisionFinal = $antiguedad->y . "%";
         $this->assertEquals($comisionFinal, $ca->calcularComision());
     }
@@ -63,7 +63,7 @@ class EmpleadoPermanenteTest extends FuncionesBasicasTest {
         $antiguedad = $fechaIngreso->diff($fechaActual);
         $ingresoTotal = SALARIO + ((SALARIO * $antiguedad->y ) / 100); 
 
-        $ca = $this->crear($nombre="Fulano",$apellido="De Tal",$dni=11111111,$salario=10000,$fechaIngreso=$fechaIngreso);
+        $ca = $this->crear($dni=DNI,$nombre="Fulano",$apellido="De Tal",$salario=10000,$fechaIngreso=$fechaIngreso);
         $this->assertEquals($ingresoTotal, $ca->calcularIngresoTotal());
     }
 

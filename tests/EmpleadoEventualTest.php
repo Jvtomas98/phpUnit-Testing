@@ -6,11 +6,11 @@ class EmpleadoEventualTest extends FuncionesBasicasTest {
 
     public function crear(
         // Parms del method crear
+        $dni=DNI,
         $salario=SALARIO,
         $montos=MONTOS,
         $nombre=NOMBRE,
-        $apellido=APELLIDO,
-        $dni=DNI
+        $apellido=APELLIDO
     ) {
         // Instancia la clase con los params del method
         $ca = new \App\EmpleadoEventual(
@@ -28,7 +28,7 @@ class EmpleadoEventualTest extends FuncionesBasicasTest {
         $montosVentas = [1000, 2000];
         $resultadoEsperado = ((1000 + 2000) / 2) * 0.05;
 
-        $ca = $this->crear($salario=SALARIO, $montos=$montosVentas); // Si no pones salario tira error ????
+        $ca = $this->crear($dni=DNI,$salario=SALARIO, $montos=$montosVentas); // Si no pones salario tira error ????
         $this->assertEquals($resultadoEsperado, $ca->calcularComision());
     }
 
@@ -38,19 +38,19 @@ class EmpleadoEventualTest extends FuncionesBasicasTest {
         $comision = ((1000 + 2000) / 2) * 0.05;
         $resultadoEsperado = $comision + SALARIO;
 
-        $ca = $this->crear($salario=SALARIO, $montos=$montosVentas);
+        $ca = $this->crear($dni=DNI,$salario=SALARIO, $montos=$montosVentas);
         $this->assertEquals($resultadoEsperado, $ca->calcularIngresoTotal());
     }
 
     public function testValidacionMontoNegativo() {
         // Test si ingresa negativo en una venta
         $this->expectException(\Exception::class);
-        $ca = $this->crear($salario=SALARIO, $montos=[-300, 1000]);
+        $ca = $this->crear($dni=DNI,$salario=SALARIO, $montos=[-300, 1000]);
     }
 
     public function testValidacionMontoCero() {
         // Test si ingresa 0 en una venta
         $this->expectException(\Exception::class);
-        $ca = $this->crear($salario=SALARIO, $montos=[2500,0]);
+        $ca = $this->crear($dni=DNI,$salario=SALARIO, $montos=[2500,0]);
     }
 }
